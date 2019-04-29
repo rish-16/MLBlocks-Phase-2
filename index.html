@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MLBlocks</title>
+
+    <script src="assets.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <style>
+    body,
+    html {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      font-family: Avenir Next;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    *:focus {
+      outline: none;
+    }
+
+    .layer-button {
+      width: 125px;
+      height: 45px;
+      text-align: center;
+      border: 1px solid lightgray;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      margin: auto 10px;
+    }
+
+    .layer-block {
+      width: 185px;
+      height: auto;
+      padding: 10px 0;
+      margin: 20px;
+      text-align: center;
+      border: 1px solid lightgray;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #layer-tab {
+      width: 100%;
+      height: 75px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+
+    #hp-tab {
+      width: 100%;
+      height: 85px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      border-bottom: 1px solid rgb(228, 228, 228);
+    }
+
+    .hp-selector {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 50px;
+      overflow: scroll;
+    }
+
+    .hp-selector .hp-title {
+      font-weight: 600;
+      font-size: 13px;
+      padding: 5px 0;
+    }
+
+    .hp-selector .hp-options {
+      width: 175;
+      height: 30px;
+      border: none;
+      font-family: Avenir Next;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .hp-selector #file-selector {
+      display: none;
+    }
+
+    #file-upload-btn,
+    #export-model-btn {
+      width: 100px;
+      height: 40px;
+      border: none;
+      background-color: rgb(245, 245, 245);
+      font-family: Avenir Next;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    #playground {
+      width: 100%;
+      height: auto;
+      margin-top: 50px;
+      overflow: scroll;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+  </style>
+
+  <body>
+    <div id="layer-tab">
+      <div class="layer-button" id="input">Input</div>
+      <div class="layer-button" id="dense">Dense</div>
+      <div class="layer-button" id="activation">Activation</div>
+      <div class="layer-button" id="dropout">Dropout</div>
+      <div class="layer-button" id="flatten">Flatten</div>
+      <!-- <div class="layer-button" id="reshape">Reshape</div> -->
+    </div>
+
+    <div id="hp-tab">
+      <div class="hp-selector" id="loss-function">
+        <p class="hp-title">Loss Function</p>
+
+        <select class="hp-options" id="loss-function-selector">
+          <option value="binary_crossentropy">Binary Crossentropy</option>
+          <option value="categorical_crossentropy"
+            >Categorical Crossentropy</option
+          >
+          <option value="mean_squared_error">Mean Squared Error</option>
+          <option value="mean_absolute_error">Mean Absolute Error</option>
+        </select>
+      </div>
+
+      <div class="hp-selector" id="optimizer">
+        <p class="hp-title">Optimizer</p>
+
+        <select class="hp-options" id="optimizer-selector">
+          <option value="adam">Adam</option>
+          <option value="nadam">Nadam</option>
+          <option value="adagrad">Adadgrad</option>
+        </select>
+      </div>
+
+      <div class="hp-selector" id="file-upload">
+        <p class="hp-title">Dataset upload</p>
+
+        <input type="file" id="file-selector" />
+        <button id="file-upload-btn">Upload</button>
+      </div>
+
+      <div class="hp-selector" id="export">
+        <p class="hp-title">Export Model</p>
+
+        <button id="export-model-btn">Export</button>
+      </div>
+    </div>
+
+    <div id="playground"></div>
+  </body>
+</html>
